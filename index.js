@@ -1,13 +1,35 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  const numSet = new Set();
+
+  for (let num of array) {
+    const complement = target - num;
+    if (numSet.has(complement)) {
+      return true;
+    }
+    numSet.add(num);
+  }
+
+  return false;
 }
+
+module.exports = hasTargetSum;
+
 
 /* 
   Write the Big O time complexity of your function here
+  Time complexity of this function is O(n) because it iterates through the input array once.
+*
 */
 
 /* 
   Add your pseudocode here
+  - Create an empty set called numSet.
+  - Iterate through each number (num) in the input array.
+  - Calculate the complement by subtracting the current number from the target.
+  - If the complement exists in numSet, return true .
+  - Add the current number to numSet.
+  - If no pair is found, return false.
+
 */
 
 /*
@@ -31,4 +53,4 @@ if (require.main === module) {
   console.log("=>", hasTargetSum([1, 2, 5], 4));
 }
 
-module.exports = hasTargetSum;
+
